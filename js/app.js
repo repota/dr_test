@@ -104,8 +104,8 @@ function optionTextsForIds(question, ids) {
 }
 
 const TEST_HOME_ICONS = {
-  cardiologist: './icons/cardio.png',
-  therapist: './icons/therapy.png',
+  cardiologist: './icons/cardio.svg',
+  therapist: './icons/therapy.svg',
 };
 
 function renderHome() {
@@ -280,12 +280,12 @@ function renderQuestion() {
   els.btnNext.hidden = isLast;
   els.btnFinish.hidden = !isLast;
   els.btnCheck.disabled = state.checked;
-  if (state.checked) {
-    els.btnNext.disabled = false;
-  } else {
-    els.btnNext.disabled = true;
+  els.btnNext.disabled = !state.checked;
+  /* На последнем вопросе всегда можно завершить тест, без проверки ответа */
+  els.btnFinish.disabled = false;
+  if (isLast) {
+    els.btnFinish.removeAttribute('disabled');
   }
-  els.btnFinish.disabled = !isLast;
 }
 
 function onCheck() {
