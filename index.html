@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#5c6b73" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="Тесты: кардиолог, терапевт" />
+  <title>Медицинские тесты</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icons/icon.svg" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <section id="screen-home" class="screen is-active" aria-label="Выбор теста">
+      <h1>Выберите тест</h1>
+      <p class="subtitle">Без входа — прогресс хранится на устройстве</p>
+      <div class="card stack" id="home-test-buttons"></div>
+    </section>
+
+    <section id="screen-menu" class="screen" aria-label="Меню теста">
+      <div class="top-bar">
+        <button type="button" class="btn btn-secondary btn-home" data-action="go-home">На главную</button>
+      </div>
+      <h1 id="menu-test-title"></h1>
+      <div class="card stack">
+        <button type="button" class="btn" id="btn-new-test">Начать новый тест</button>
+        <button type="button" class="btn" id="btn-continue" disabled>Продолжить текущую попытку</button>
+        <button type="button" class="btn btn-secondary" id="btn-stats-from-menu">Статистика</button>
+      </div>
+    </section>
+
+    <section id="screen-question" class="screen" aria-label="Вопрос">
+      <div class="top-bar">
+        <button type="button" class="btn btn-secondary btn-home" data-action="go-home">На главную</button>
+      </div>
+      <div class="card">
+        <div class="question-meta" id="question-progress"></div>
+        <p class="question-text" id="question-text"></p>
+        <img class="question-image" id="question-image" alt="" hidden />
+        <div class="options" id="question-options"></div>
+        <div class="feedback" id="question-feedback" role="status"></div>
+        <div class="btn-row">
+          <button type="button" class="btn btn-secondary" id="btn-check">Проверить вопрос</button>
+          <button type="button" class="btn" id="btn-next" disabled>Следующий вопрос</button>
+          <button type="button" class="btn" id="btn-finish" hidden disabled>Завершить тест</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-stats" class="screen" aria-label="Статистика">
+      <div class="top-bar">
+        <button type="button" class="btn btn-secondary btn-home" data-action="go-home">На главную</button>
+      </div>
+      <h1 id="stats-title">Статистика</h1>
+      <p class="subtitle" id="stats-subtitle"></p>
+      <div class="card">
+        <ul class="stats-list" id="stats-list"></ul>
+        <p class="empty-hint" id="stats-empty" hidden>Сначала пройди тест</p>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>

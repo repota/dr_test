@@ -1,0 +1,19 @@
+{
+  "name": "Медицинские тесты",
+  "short_name": "Тесты",
+  "description": "Тесты с вопросами и вариантами ответов",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f2ef",
+  "theme_color": "#5c6b73",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
