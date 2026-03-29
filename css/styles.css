@@ -12,6 +12,9 @@
   --error-bg: #fdecea;
   --disabled: #b2bec3;
   --shadow: rgba(45, 52, 54, 0.08);
+  /* «Завершить тест» — поменяйте эти два значения для другого цвета */
+  --btn-finish-bg: #FF7900;
+  --btn-finish-hover: #3d5560;
 }
 
 *,
@@ -116,6 +119,18 @@ h2 {
   opacity: 0.85;
 }
 
+.btn-finish:not(:disabled) {
+  background: var(--btn-finish-bg);
+}
+
+.btn-finish:hover:not(:disabled) {
+  background: var(--btn-finish-hover);
+}
+
+.btn-finish:disabled {
+  background: var(--disabled);
+}
+
 .btn-secondary {
   background: var(--surface);
   color: var(--primary);
@@ -142,6 +157,13 @@ h2 {
 .question-text {
   margin: 0 0 1rem;
   font-size: 1.05rem;
+}
+
+.question-input-hint {
+  margin: 0 0 0.65rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .question-image {

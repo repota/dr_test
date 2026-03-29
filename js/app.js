@@ -18,6 +18,7 @@ const els = {
   questionText: document.getElementById('question-text'),
   questionImage: document.getElementById('question-image'),
   questionOptions: document.getElementById('question-options'),
+  questionInputHint: document.getElementById('question-input-hint'),
   questionFeedback: document.getElementById('question-feedback'),
   btnCheck: document.getElementById('btn-check'),
   btnNext: document.getElementById('btn-next'),
@@ -214,6 +215,11 @@ function renderQuestion() {
     els.questionImage.removeAttribute('src');
   }
 
+  els.questionInputHint.textContent =
+    q.inputType === 'checkbox'
+      ? 'Выберите один или несколько ответов'
+      : 'Выберите один ответ';
+
   els.questionOptions.innerHTML = '';
   const inputName = `q-${q.id}`;
   const type = q.inputType === 'checkbox' ? 'checkbox' : 'radio';
@@ -349,16 +355,17 @@ async function init() {
   if (!main.tests || !Array.isArray(main.tests)) {
     throw new Error('Неверный формат tests.json');
   }
-  let extra = [];
+  const extra = [];
+  /* Отладочный тест (data/debug-test.json) — раскомментируйте для включения
   try {
     const debugRes = await fetch('./data/debug-test.json', { cache: 'no-store' });
     if (debugRes.ok) {
       const dbg = await debugRes.json();
-      if (dbg.tests && Array.isArray(dbg.tests)) extra = dbg.tests;
+      if (dbg.tests && Array.isArray(dbg.tests)) extra.push(...dbg.tests);
     }
   } catch {
-    /* файл отладки необязателен */
   }
+  */
   catalog = { tests: [...main.tests, ...extra] };
 
   renderHome();
