@@ -103,13 +103,29 @@ function optionTextsForIds(question, ids) {
   return ids.map((id) => map.get(id) || id).join(', ');
 }
 
+const TEST_HOME_ICONS = {
+  cardiologist: './icons/cardio.png',
+  therapist: './icons/therapy.png',
+};
+
 function renderHome() {
   els.homeTestButtons.innerHTML = '';
   catalog.tests.forEach((t) => {
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'btn';
-    b.textContent = t.title;
+    b.className = 'btn btn-test';
+    const iconSrc = TEST_HOME_ICONS[t.id];
+    if (iconSrc) {
+      const img = document.createElement('img');
+      img.src = iconSrc;
+      img.alt = '';
+      img.className = 'btn-test-icon';
+      b.appendChild(img);
+    }
+    const label = document.createElement('span');
+    label.className = 'btn-test-label';
+    label.textContent = t.title;
+    b.appendChild(label);
     b.addEventListener('click', () => openTestMenu(t.id));
     els.homeTestButtons.appendChild(b);
   });
@@ -266,11 +282,10 @@ function renderQuestion() {
   els.btnCheck.disabled = state.checked;
   if (state.checked) {
     els.btnNext.disabled = false;
-    els.btnFinish.disabled = false;
   } else {
     els.btnNext.disabled = true;
-    els.btnFinish.disabled = true;
   }
+  els.btnFinish.disabled = !isLast;
 }
 
 function onCheck() {
@@ -303,7 +318,6 @@ function onCheck() {
   });
   els.btnCheck.disabled = true;
   els.btnNext.disabled = false;
-  els.btnFinish.disabled = false;
 }
 
 function onNext() {

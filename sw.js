@@ -8,6 +8,8 @@ const ASSETS = [
   './data/debug-test.json',
   './data/debug-q3.svg',
   './icons/icon.svg',
+  './icons/cardio.png',
+  './icons/therapy.png',
 ];
 
 self.addEventListener('install', (event) => {
