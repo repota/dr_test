@@ -158,6 +158,16 @@ h2 {
   background: var(--bg);
 }
 
+.btn-secondary.btn-home {
+  background: #008b8b;
+  color: #fff;
+  border-color: #007a7a;
+}
+
+.btn-secondary.btn-home:hover:not(:disabled) {
+  background: #007070;
+}
+
 .btn-row {
   display: flex;
   flex-direction: column;

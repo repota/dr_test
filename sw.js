@@ -1,4 +1,4 @@
-const CACHE = 'dr-test-v1';
+const CACHE = 'dr-test-v2';
 const ASSETS = [
   './index.html',
   './css/styles.css',
@@ -7,7 +7,7 @@ const ASSETS = [
   './data/tests.json',
   './data/debug-test.json',
   './data/debug-q3.svg',
-  './icons/icon.svg',
+  './icons/quiz-svgrepo-com.svg',
   './icons/cardio.svg',
   './icons/therapy.svg',
 ];

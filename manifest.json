@@ -10,7 +10,7 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "./icons/icon.svg",
+      "src": "./icons/quiz-svgrepo-com.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

@@ -278,7 +278,8 @@ function renderQuestion() {
 
   const isLast = idx === questions.length - 1;
   els.btnNext.hidden = isLast;
-  els.btnFinish.hidden = !isLast;
+  els.btnFinish.hidden = false;
+  els.btnFinish.textContent = isLast ? 'Завершить тест' : 'Прервать тест';
   els.btnCheck.disabled = state.checked;
   els.btnNext.disabled = !state.checked;
   /* На последнем вопросе всегда можно завершить тест, без проверки ответа */
