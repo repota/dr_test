@@ -109,6 +109,10 @@ h2 {
   flex: 1;
 }
 
+.btn[hidden] {
+  display: none !important;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

@@ -281,7 +281,7 @@ function renderQuestion() {
   els.btnFinish.hidden = false;
   els.btnFinish.textContent = isLast ? 'Завершить тест' : 'Прервать тест';
   els.btnCheck.disabled = state.checked;
-  els.btnNext.disabled = !state.checked;
+  els.btnNext.disabled = isLast || !state.checked;
   /* На последнем вопросе всегда можно завершить тест, без проверки ответа */
   els.btnFinish.disabled = false;
   if (isLast) {
@@ -318,7 +318,8 @@ function onCheck() {
     inp.disabled = true;
   });
   els.btnCheck.disabled = true;
-  els.btnNext.disabled = false;
+  const isLast = progress.currentIndex === currentTest.questions.length - 1;
+  els.btnNext.disabled = isLast;
 }
 
 function onNext() {
